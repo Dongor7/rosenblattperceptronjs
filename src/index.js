@@ -3,13 +3,13 @@ import Perceptron from './Perceptron';
 
 const axisWidth = 350;
 const initialSet = [
-  {name:"Human",x1:32,x2:175,cat:1},
-  {name:"Horse",x1:24,x2:170,cat:1},
-  {name:"Cat",x1:20,x2:50,cat:1},
-  {name:"Piranha",x1:30,x2:10,cat:0},
-  {name:"Elephant",x1:24,x2:340,cat:1},
-  {name:"Crocodile",x1:64,x2:250,cat:0},
-  {name:"Hyena",x1:34,x2:120,cat:0},
+  {name:"Человек",x1:32,x2:175,cat:1},
+  {name:"Лошадь",x1:24,x2:170,cat:1},
+  {name:"Кот",x1:20,x2:50,cat:1},
+  {name:"Пиранья",x1:30,x2:10,cat:0},
+  {name:"Слон",x1:24,x2:340,cat:1},
+  {name:"Крокодил",x1:64,x2:250,cat:0},
+  {name:"Гиена",x1:34,x2:120,cat:0},
 ];
 const app = new Vue({
   el: '#app',

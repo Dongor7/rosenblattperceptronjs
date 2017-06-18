@@ -1,3 +1,5 @@
+Russian translation for https://github.com/elyx0/rosenblattperceptronjs.git
+
 # Rosenblatt Perceptron [![Build Status][travis-image]][travis-url]
 
 DEMO: https://rosenblattperceptron.herokuapp.com/

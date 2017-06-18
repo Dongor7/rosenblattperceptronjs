@@ -40,6 +40,6 @@ export default {
   plugins: [
     new ExtractTextPlugin({filename:"[name].[contenthash].css"}),
     new webpack.NamedModulesPlugin(),
-    new HtmlWebpackPlugin({title: 'Visualizing Perceptron',template: 'src/index.html.ejs'})
+    new HtmlWebpackPlugin({title: 'Визуализация перцептрона',template: 'src/index.html.ejs'})
   ]
 }

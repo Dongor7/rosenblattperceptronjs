@@ -16,10 +16,10 @@
 <div>
   <header class="tc ph4">
     <h1 class="f3 f2-m f1-l fw2 black-90 mv3">
-      Visualizing Rosenblatt perceptron training
+        Визуализация тренировки <br /> перцептрона Розенблатта
     </h1>
     <h2 class="f5 f4-m f3-l fw2 black-50 mt0 lh-copy">
-      Training of a <a target="_blank" href="https://en.wikipedia.org/wiki/Perceptron#Learning_algorithm">single layer feed forward binary classifier</a> using the Heaviside step function
+      Тренировка <br /> <a target="_blank" href="https://en.wikipedia.org/wiki/Perceptron#Learning_algorithm">однослойного бинарного классификатора с предварительным обучением</a> <br /> с использованием функции активации Heaviside
     </h2>
   </header>
 
@@ -68,21 +68,18 @@
   <div class="dt-ns dt--fixed-ns w-100">
     <div class="pa3 pa4-ns dtc-ns v-mid">
       <div>
-        <h2 class="fw4 blue mt0 mb3">Our Perceptron is trained! </h2>
+        <h2 class="fw4 blue mt0 mb3">Тренировка перцептрона завершена </h2>
         <p class="black-70 tc lh-copy mv0">
-          <p v-if="predictedSet.length == 0"> It is important to notice that it will converge to any solution that satisfies the training set.
-          Try to retrain to see if it changes.<br /><br />
-          Now we can use it to categorize samples it's never seen.<br /><br />
+        <p v-if="predictedSet.length == 0">
         </p>
-         <p v-else>According to the perceptron, something with <i>{{ ~~(predictedSet[predictedSet.length-1].x1 * maxX) }}</i> teeth and <i>{{ ~~(predictedSet[predictedSet.length-1].x2 * maxY) }}</i>cm looks <i>{{ predictedSet[predictedSet.length-1].cat ? 'nice' : 'NOT nice' }}</i></p>
-          {{predictedSet.length ? "But w" :"W"}}ould something with: <i>{{ ~~(randomValue[0]*maxX) }}</i>teeth and a size of   <i>{{ ~~(randomValue[1]*maxY) }}</i> cm, likely to be <i>nice</i>?
+         <p v-else>Судя по ответу перцептрона существо с количеством зубов <i>{{ ~~(predictedSet[predictedSet.length-1].x1 * maxX) }}</i> и размером <i>{{ ~~(predictedSet[predictedSet.length-1].x2 * maxY) }}</i> является <i>{{ predictedSet[predictedSet.length-1].cat ? 'не опасным' : 'опасным' }}</i></p>
           <pre><code>p.predict({{ randomValue }})</code></pre>
         </p>
       </div>
     </div>
     <div class="pa3 pa4-ns dtc-ns v-mid">
-      <a v-on:click="predictValue" class="no-underline f6 tc db w-100 pv3 bg-animate bg-blue hover-bg-dark-blue white br2">Predict</a>
-      <a v-on:click="trainPerceptron" class="no-underline f6 tc db w-100 mt5 pv3 bg-animate bg-mid-gray hover-bg-dark-blue white br2">Retrain</a>
+      <a v-on:click="predictValue" class="no-underline f6 tc db w-100 pv3 bg-animate bg-blue hover-bg-dark-blue white br2">Предсказать</a>
+      <a v-on:click="trainPerceptron" class="no-underline f6 tc db w-100 mt5 pv3 bg-animate bg-mid-gray hover-bg-dark-blue white br2">Тренировать еще раз</a>
     </div>
   </div>
 </article>
@@ -90,18 +87,18 @@
   <div class="dt-ns dt--fixed-ns w-100">
     <div class="pa3 pa4-ns dtc-ns v-mid">
       <div>
-        <h2 class="fw4 blue mt0 mb3">Training the Perceptron </h2>
+        <h2 class="fw4 blue mt0 mb3">Тренировка перцептрона </h2>
         <p class="black-70 tc lh-copy mv0">
-          We feed it a suite of (hypothetical) inputs and outputs according to this table<em>*</em> :
+          Подаем на вход набор (гипотетических) данных в соответствие с таблицей<em>*</em> :
           <div class="pa4">
   <div class="overflow-auto">
     <table class="f6 w-100 mw8 center" cellspacing="0">
       <thead>
         <tr class="stripe-dark">
-          <th class="fw6 tl pa3 bg-white">Entity</th>
-          <th class="fw6 tl pa3 bg-white">Teeth</th>
-          <th class="fw6 tl pa3 bg-white">Size (cm)</th>
-          <th class="fw6 tl pa3 bg-white">Friendly</th>
+          <th class="fw6 tl pa3 bg-white">Сущность</th>
+          <th class="fw6 tl pa3 bg-white">Количество зубов</th>
+          <th class="fw6 tl pa3 bg-white">Размер (cm)</th>
+          <th class="fw6 tl pa3 bg-white">Опасность</th>
         </tr>
       </thead>
       <tbody class="lh-copy">
@@ -109,14 +106,14 @@
           <td class="pa3">{{item.name}}</td>
           <td class="pa3">{{item.x1}}</td>
           <td class="pa3">{{item.x2}}</td>
-          <td class="pa3">{{item.cat ? 'yes' : 'no'}}</td>
+          <td class="pa3">{{item.cat ? 'нет' : 'да'}}</td>
         </tr>
       </tbody>
     </table>
-    <em class='shh'>* I know it's not accurate but it's for the sake of the demonstration.</em>
+    <em class='shh'>* Данные неточны. Только для демонстрации.</em>
   </div>
 </div>
-  <p class="black-70 tc lh-copy mv0">We normalize our values between <i>[0;1]</i> before sending them through training:</p>
+  <p class="black-70 tc lh-copy mv0">Нормализуем входящие значения в диапазон <i>[0;1]</i> перед тренировкой:</p>
 
           <pre><code>
 const p = new Perceptron();
@@ -124,11 +121,11 @@ const p = new Perceptron();
 p.learn(updateGraph);
           </code></pre>
         </p>
-          <p class="black-70 tc lh-copy mv0">The perceptron will try to find a linear separation between the <i class="positive">positive</i> and <i class="negative">negative</i> examples</p>
+          <p class="black-70 tc lh-copy mv0">Перцептрон попытается найти линию раздела между <i class="positive">положительными</i> и <i class="negative">отрицательными</i> образцами</p>
       </div>
     </div>
   </div>
-  <a href='#' v-on:click="trainPerceptron" class="no-underline f6 tc db w-100 pv3 bg-animate bg-blue hover-bg-dark-blue white br2">Train</a>
+  <a href='#' v-on:click="trainPerceptron" class="no-underline f6 tc db w-100 pv3 bg-animate bg-blue hover-bg-dark-blue white br2">Тренировать</a>
 </article>
 
 
